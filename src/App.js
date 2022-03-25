@@ -1,12 +1,15 @@
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+
+
 
 function App() {
   return (
     <div>
-      <header className="Menu">
-        <img src={'./images/afklogo1.png'} className="Logo-app" alt="logo" />
-        <Navbar />
+      <header>
+        <NavBar/>
+        <ItemListContainer greeting={'Todo lo que tu pc necesita'}/>
       </header>
     </div>
   );
