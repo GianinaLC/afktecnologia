@@ -1,0 +1,10 @@
+.divCount {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+  
+.divCount div {
+    width: 100px;
+    height: 100px;
+  }
