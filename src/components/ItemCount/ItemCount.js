@@ -9,7 +9,7 @@ const Counter = ({initial, stock, onAdd}) => {
     },[])
 
     const decrement = () => {
-        if (count > 1){
+        if (count > initial){
             setCount(count - 1)
         }
     }
