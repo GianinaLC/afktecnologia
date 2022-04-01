@@ -22,7 +22,7 @@ const ItemListContainer = (props) =>{
 
     return (
         <div>
-            <h2>{props.greeting}</h2>
+            <h2 className='titlePag'>{props.greeting}</h2>
             {/* <Counter initial={1} stock={5} onAdd={handleOnAdd}/> */}
             <ItemList products={products}/>
         </div>
