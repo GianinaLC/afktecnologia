@@ -1,6 +1,5 @@
 .cardSize{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     flex: 1;
 } 

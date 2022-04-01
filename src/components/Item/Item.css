@@ -1,8 +1,9 @@
-*{box-sizing: border-box;}
-
-.titleSize{
+.titleProd{
     padding: 5px;
     margin: 5px;
+    font-family: 'Jura', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .card {
@@ -21,7 +22,7 @@
 }
 
 .cardImg {
-    max-width: 200px;
+    max-width: 100%;
     height: 200px;
     padding: 10px;
 }

@@ -1,6 +1,9 @@
-h2{
-    font-size:40px;
+.titlePag{
+    font-size: 50px;
+    color: rgb(15, 3, 3);
+    text-shadow:  #CCC 1px 0 10px;;
+    padding: 20px;
     text-align: center;
     text-transform: uppercase;
-
+    font-family: 'Rubik Glitch', cursive;
 }
