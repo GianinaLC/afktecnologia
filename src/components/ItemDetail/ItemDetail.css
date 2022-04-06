@@ -1,0 +1,22 @@
+.cardDetail{
+    padding: 20px;
+    margin: 20px;
+    max-width: 700px;
+    background-color: aliceblue;
+    
+}
+
+.cardDetailText{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.cardDetailText > div{
+    text-align: center;
+}
+
+.cardImgDetail{
+    max-width: 300px;
+}
