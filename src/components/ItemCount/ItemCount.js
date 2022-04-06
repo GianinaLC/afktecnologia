@@ -1,12 +1,8 @@
-import {useState, useEffect} from 'react'
 import './ItemCount.css'
+import {useState} from 'react'
 
-const Counter = ({initial, stock, onAdd}) => {
+const ItemCount = ({initial, stock, onAdd}) => {
     const [count, setCount] = useState(initial)
-    
-    useEffect (()=>{
-        console.log('Se montó el componente')
-    },[])
 
     const decrement = () => {
         if (count > initial){
@@ -20,19 +16,19 @@ const Counter = ({initial, stock, onAdd}) => {
         }
     }
 
-    console.log('se va a montar el componente')
 
     return (
         <div className='divCount'>
             <div>
-                <button onClick={decrement}>-</button>
-                <p>{count}</p>
-                <button onClick={increment}>+</button>
-                <button onClick={()=> onAdd(count)}>Agregar al carrito</button>
-                
+                <div>
+                    <button onClick={decrement} className='buttonUpDown'>-</button>
+                    <p className='countP'>{count}</p>
+                    <button onClick={increment} className='buttonUpDown'>+</button>
+                </div>
+                <button onClick={()=> onAdd(count)} className='buttonAddCart'>Agregar al carrito</button>
             </div>
         </div>
     )
 }
 
-export default Counter
+export default ItemCount

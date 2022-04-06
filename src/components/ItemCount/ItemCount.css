@@ -2,9 +2,49 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    padding: 10px;
+    margin: 0;
 }
-  
-.divCount div {
-    width: 100px;
-    height: 100px;
-  }
+
+.divButtonCount{
+    width: 200px;
+    height: 150px;
+    margin: 20px;
+}
+
+.buttonUpDown{
+    margin: 2px;
+    padding: 2px 20px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: #8e95a1;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 3px rgba(153, 153, 153, 0.541); 
+}
+
+.buttonUpDown:hover{
+    background-color: #555b66;
+}
+
+.countP{
+    margin: 0;
+}
+
+.buttonAddCart{
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px rgba(153, 153, 153, 0.541);
+}
+
+.buttonAddCart:hover {background-color: #3e8e41}

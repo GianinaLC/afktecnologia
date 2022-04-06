@@ -41,14 +41,53 @@ const products = [
         img: './images/CableRed5mt-e5.png',
         stock: 10,
         description: 'bobina'
-
+    },
+    {
+        id: 6,
+        name: 'Teclado Mecanico Logitech G Pro Ed KDA Lol Lightsync Rgb',
+        price: 17099,
+        img: './images/TecladoMecanicoLogitechKDA.png',
+        stock: 5,
+        description: `Descripción
+            ESPECIFICACIONES FÍSICAS
+            • Altura: 34 mm
+            • Anchura: 361 mm
+            • Profundidad: 153 mm
+            
+            INTERRUPTORES GX BLUE CLICK PERCEPTIBLE
+            • Distancia de actuación: 2-0 mm
+            • Fuerza de actuación: 50 g
+            
+            INTERRUPTORES GX BLUE CLICK PERCEPTIBLE
+            • Distancia de actuación: 2,0 mm
+            • Fuerza de actuación: 50 g
+            • Recorrido total: 3,7 mm
+            
+            OTRAS FUNCIONES
+            • Diseño sin teclado numérico inspirado en los profesionales
+            • Interruptores mecánicos con click perceptible GX Blue
+            • Iluminación RGB LIGHTSYNC2Las funciones avanzadas requieren el software para juegos Logitech G HUB
+            • Perfil de iluminación integrado3Las funciones avanzadas requieren el software para juegos Logitech G HUB
+            • Cable extraíble de 1,8 m (6 ft)
+            • 12 teclas F programables
+            • Velocidad de respuesta de 1 ms`
     }
 ]
+
+
 //export nombrado
 export const getProducts = () => {
     return new Promise (resolve => {
         setTimeout (() => {
             resolve(products)
+        }, 2000)
+    }) 
+}
+
+export const getItem = () => {
+    return new Promise (resolve => {
+        setTimeout (() => {
+            resolve(products.find(prod => prod.id === 6))
         }, 2000)
     }) 
 }

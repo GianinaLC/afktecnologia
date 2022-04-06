@@ -1,5 +1,4 @@
 import './ItemListContainer.css'
-/* import Counter from '../ItemCount/ItemCount' */
 import { useState, useEffect } from 'react'
 import { getProducts } from '../../asyncmock'
 import ItemList from '../ItemList/ItemList'
@@ -16,15 +15,9 @@ const ItemListContainer = (props) =>{
     },[])
 
 
-    /* const handleOnAdd = (quantity) => {
-        console.log(`se agregaron ${quantity} productos`)
-    }  */
-
     return (
         <div>
-            <h2 className='titlePag'>{props.greeting}</h2>
-            {/* <Counter initial={1} stock={5} onAdd={handleOnAdd}/> */}
-            <ItemList products={products}/>
+            <h2 className='titlePag'>{props.greeting}</h2>{(products.length > 0)?<ItemList products={products}/>:<p style={{fontSize:'20px', textAlign:'center'}}>Cargando...</p>}
         </div>
     )
 }
