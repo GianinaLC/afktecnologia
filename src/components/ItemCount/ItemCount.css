@@ -1,11 +1,3 @@
-.divCount {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 0;
-}
-
 .divButtonCount{
     width: 200px;
     height: 150px;
@@ -28,10 +20,6 @@
     background-color: #555b66;
 }
 
-.countP{
-    margin: 0;
-}
-
 .buttonAddCart{
     display: inline-block;
     padding: 15px 25px;
@@ -47,4 +35,4 @@
     box-shadow: 0 5px rgba(153, 153, 153, 0.541);
 }
 
-.buttonAddCart:hover {background-color: #3e8e41}
+.buttonAddCart:hover {background-color: #3e8e41} 

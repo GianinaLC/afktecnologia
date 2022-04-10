@@ -7,3 +7,19 @@
     text-transform: uppercase;
     font-family: 'Rubik Glitch', cursive;
 }
+
+.imgFondo{
+    background-image: url(../../../public/images/F007.jpg);
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.textFondo{text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

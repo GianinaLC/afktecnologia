@@ -1,22 +1,46 @@
 .cardDetail{
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px!important;
     margin: 20px;
-    max-width: 700px;
-    background-color: aliceblue;
-    
+    background-color: rgba(71, 157, 233, 0.281);
 }
 
 .cardDetailText{
     display: flex;
-    flex-wrap: nowrap;
-    padding: 5px;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
     margin-bottom: 10px;
 }
 
-.cardDetailText > div{
+.cardCount{
     text-align: center;
+} 
+
+.cardCount p{
+    margin: 0;
+} 
+
+.counter{
+    padding: 20px;
+}
+
+.cardCount span{
+    padding-left: 10px;
+    color:black;
+    font-Size:16px;
 }
 
 .cardImgDetail{
     max-width: 300px;
+    height: 300px;
+} 
+
+.cardDetailDescription{
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
 }
