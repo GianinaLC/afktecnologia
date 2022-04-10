@@ -1,7 +1,6 @@
 .cardSize{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-    flex: 1;
+    justify-content: space-around;
+    margin: 10px;
 } 
