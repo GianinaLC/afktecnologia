@@ -3,8 +3,8 @@ import './CartWidget.css'
 
 const CartWidget = () =>{
     return (
-            <div>
-                <p className='cartStyle'>6 <FaShoppingCart /></p>
+            <div className='cartStyle'>
+                <p>6 <FaShoppingCart /></p>
             </div>
             ) 
     }

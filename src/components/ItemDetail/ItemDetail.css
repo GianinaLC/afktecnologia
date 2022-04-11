@@ -1,32 +1,41 @@
 .cardDetail{
     display: flex;
-    flex-direction: column;
-    padding: 30px!important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 20px;
-    background-color: rgba(71, 157, 233, 0.281);
 }
 
 .cardDetailText{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    padding: 10px;
+    flex-grow: 1 ;
     justify-content: space-around;
+    padding: 10px;
+    margin: 20px;
     align-items: center;
     background-color: #fff;
-    margin-bottom: 10px;
+    align-items: flex-start;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.titleDetailProd{
+    font-size: 20px;
+    font-family: 'Jura', sans-serif;
+    font-weight: bold;
 }
 
 .cardCount{
     text-align: center;
+    padding: 10px;
+    width: 300px;
 } 
 
 .cardCount p{
     margin: 0;
 } 
-
-.counter{
-    padding: 20px;
-}
 
 .cardCount span{
     padding-left: 10px;
@@ -37,10 +46,38 @@
 .cardImgDetail{
     max-width: 300px;
     height: 300px;
+    padding: 10px;
+    
 } 
 
 .cardDetailDescription{
-    padding: 10px;
-    font-size: 20px;
-    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    font-size: 18px;
+    background-color: #95ddcd;
+    border-radius: 25px;
+    margin: 20px;
+    max-height: 400px;
+    overflow: auto;
+    
 }
+
+.cardDetailDescription::-webkit-scrollbar {
+    width: 5px;
+  }
+
+.cardDetailDescription::-webkit-scrollbar-track {
+    box-shadow:inset 0 0 5px rgba(112, 108, 111, 0.5);
+    border-radius: 10px;
+    height: 20px;
+  }
+
+.cardDetailDescription::-webkit-scrollbar-thumb {
+    background: #f12fc08e;
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+ .cardDetailDescription::-webkit-scrollbar-thumb:hover {
+    background: #f12fc0e3;
+  }
