@@ -16,7 +16,14 @@ const products = [
         img: '../images/MouseLogitechG502KDA.png',
         stock: 6,
         category: 'accesorios',
-        description: 'descripcion'
+        description: `Utiliza cable.
+        Posee rueda de desplazamiento.
+        Cuenta con 11 botones para un mayor control.
+        Con luces para mejorar la experiencia de uso.
+        Con sensor óptico.
+        Resolución de 25600dpi.
+        Creado para llevar a todas partes.
+        Control inteligente y navegación fácil.`
 
     },
     {
@@ -26,7 +33,17 @@ const products = [
         img: '../images/MouseYindiaoA2Black.png',
         stock: 8,
         category: 'accesorios',
-        description: 'descripcion'
+        description: `Contiene usb inalámbrico.
+        Puede conectarse a cualquier dispositivo a través de Bluetooth.
+        Incluye batería recargable.
+        Posee rueda de desplazamiento.
+        Cuenta con 4 botones para un mayor control.
+        Con luces para mejorar la experiencia de uso.
+        Cuenta con interruptor de ahorro de energía.
+        Con sensor óptico.
+        Resolución de 1600dpi.
+        Creado para llevar a todas partes.
+        Control inteligente y navegación fácil.`
 
     },
     {
@@ -66,7 +83,7 @@ const products = [
         img: '../images/FanCoolerSeisa120mm.png',
         stock: 4,
         category: 'componentes',
-        description: 'descripcion'
+        description: 'Incluye Tornillos y adaptador 12v'
 
     },
     {
@@ -265,10 +282,10 @@ const products = [
         img: '../images/AuricularesHyperX.png',
         stock: 5,
         category: 'accesorio',
-        description: `Es inalámbrico: Sí
-        Con cancelación de ruido: Sí
-        Con luz LED: Sí
-        Duración de la batería: 30 h
+        description: `Es inalámbrico: Sí, 
+        Con cancelación de ruido: Sí, 
+        Con luz LED: Sí, 
+        Duración de la batería: 30 h, 
         Con micrófono: Sí`
     },
     {
@@ -296,7 +313,7 @@ export const getCategories = () => {
     return new Promise (resolve => {
         setTimeout(() => {
             resolve(categories)
-        },500)
+        },2000)
     })
 }
 
@@ -305,14 +322,15 @@ export const getProducts = (categoryId) => {
     return new Promise (resolve => {
         setTimeout (() => {
             resolve(categoryId ? products.filter(prod => prod.category === categoryId) : products)
-        }, 500)
+        }, 2000)
     }) 
 }
 
+//en la consigna da el ejemplo de nombrarlo getItem.., pero el profe lo llamó getProductById
 export const getItem = (id) => {
     return new Promise (resolve => {
         setTimeout (() => {
             resolve(products.find(prod => prod.id === id))
-        }, 500)
+        }, 2000)
     }) 
 }

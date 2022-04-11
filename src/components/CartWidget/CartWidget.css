@@ -1,6 +1,13 @@
 .cartStyle{
-    font-size: 30px;
-    margin: 5px;
-    padding: 10px;
-    color: white;
+    font-size: 16px;
+    padding: 8px 10px;
+    text-align: center;
+    background-color:  #95ddcd;
+    width: 65px;
+    border-radius: 25px;
+    margin: 0 15px;
+}
+
+.cartStyle p{
+    margin: 0;
 }
