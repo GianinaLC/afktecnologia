@@ -281,7 +281,7 @@ const products = [
         price: 17905,
         img: '../images/AuricularesHyperX.png',
         stock: 5,
-        category: 'accesorio',
+        category: 'accesorios',
         description: `Es inalámbrico: Sí, 
         Con cancelación de ruido: Sí, 
         Con luz LED: Sí, 
@@ -294,7 +294,7 @@ const products = [
         price: 7799,
         img: '../images/GabineteGamerKolinkVoid.png',
         stock: 5,
-        category: 'accesorio',
+        category: 'accesorios',
         description: `Incluye fuente de alimentación: No
         Tipo de estructura: Mid tower
         Puertos: USB 3.0
