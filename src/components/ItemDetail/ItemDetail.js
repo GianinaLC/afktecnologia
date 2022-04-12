@@ -1,12 +1,17 @@
 import './ItemDetail.css'
-import ItemCount from '../ItemCount/ItemCount'/* 
-import Container from 'react-bootstrap/esm/Container' */
+import ItemCount from '../ItemCount/ItemCount'
+import {Link} from 'react-router-dom'
+import { useState} from 'react'
 
 const ItemDetail = ({name, img, price, stock, description}) => {
+
+    const [quantity, setQuantity]= useState(0)
     
-    const handleOnAdd = (quantity) => {
-        console.log(`se agregaron ${quantity} productos`)
-    } 
+    const handleOnAdd = (count) => {
+        console.log('agregar al carrito')
+        setQuantity(count)
+    }
+    
     return(
         <div className="cardDetail">
             <div className='cardDetailText'>
@@ -16,7 +21,7 @@ const ItemDetail = ({name, img, price, stock, description}) => {
                 <div className='cardCount'>
                     <h3 className="titleDetailProd">{name}</h3>
                     <div>
-                        <ItemCount initial={1} stock={5} onAdd={handleOnAdd}/>
+                        {quantity > 0 ? <Link to='/cart' className='goCart'><span>Ir al carrito</span></Link> : <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
                     </div>
                     <p className="price">
                         ${price} <span style={{color:'grey', fontSize:'16px'}}>Stock: {stock}</span>

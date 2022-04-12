@@ -81,3 +81,41 @@
  .cardDetailDescription::-webkit-scrollbar-thumb:hover {
     background: #f12fc0e3;
   }
+
+.goCart{
+display: inline-block;
+border-radius: 4px;
+background-color: #f4511e;
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 16px;
+padding: 10px;
+width: 150px;
+transition: all 0.5s;
+margin: 5px;
+}
+
+.goCart span {
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.goCart span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.goCart:hover span {
+padding-right: 25px;
+}
+
+.goCart:hover span:after {
+opacity: 1;
+right: 0;
+}
