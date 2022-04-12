@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 
 
 const ItemDetailContainer = () => {
-    const [item, setItem] = useState([])
+    const [item, setItem] = useState()
     const [loading, setLoading] = useState(true)
 
     //const params = useParams() devuelve un objeto, entonces para no tener que escribir despues params.productId (props), lo desestructuro
@@ -29,13 +29,14 @@ const ItemDetailContainer = () => {
 
     return ( 
         <div className='detailContainer'>
-            {loading?
+            {   loading ?
                 <div className='spinnerContainer'><p className='spinner'></p></div>
                 :
                 item ?
                     <ItemDetail {...item}/> 
                 :
-                <h2>El producto no existe</h2>}
+                <h2>El producto no existe</h2>
+            }
             {/*  dejo vacío el párrafo para que me tome el primer string de (cargando..) que se efectúa en el itemListContainer  */}
         </div>
     )

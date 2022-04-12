@@ -25,7 +25,6 @@ const ItemListContainer = (props) =>{
         })
     },[categoryId])
 
-
     return (
         <div>
             {
@@ -42,10 +41,7 @@ const ItemListContainer = (props) =>{
                         </div> 
                         <ItemList products={products}/>
                     </div>
-                    :   <div className='spinnerContainer'>
-                            <p className='spinner'></p>
-                            <p>Cargando los productos...</p>
-                        </div>
+                    :   <h3>No se encontraron productos</h3>
             }
         </div>
     )
