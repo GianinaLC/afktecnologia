@@ -1,0 +1,31 @@
+.bgFooter{
+    background-color: rgb(7, 7, 7);
+    margin-top: 10px;
+}
+
+.iconContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 15px;
+    color: rgb(173, 185, 181);
+}
+
+.divInfo{
+    font-size: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    text-align: center;
+}
+.divInfo p{
+    margin: 0;
+}
+
+.iconFooter{
+    margin-bottom: 10px;
+    font-size: 60px;
+}

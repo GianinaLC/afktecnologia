@@ -20,27 +20,28 @@ const ItemListContainer = (props) =>{
             setLoading(false)
         })
 
-        return (() => {
-            setProducts()
-        })
     },[categoryId])
+
 
     return (
         <div>
-            {
-                loading ? 
+            
+                <div>
+                    <div className='imgFondo'>
+                        <div className='textFondo'>
+                            <h2 className='titlePag'>{props.greeting}</h2>
+                            <h2 className='titlePag'>{categoryId}</h2>
+                        </div>
+                    </div> 
+
+                </div>
+                
+                {loading ? 
                     <div className='spinnerContainer'><p className='spinner'></p></div>
                 :
                 products ? 
-                    <div>
-                        <div className='imgFondo'>
-                            <div className='textFondo'>
-                                <h2 className='titlePag'>{props.greeting}</h2>
-                                <h2 className='titlePag'>{categoryId}</h2>
-                            </div>
-                        </div> 
                         <ItemList products={products}/>
-                    </div>
+                    
                     :   <h3>No se encontraron productos</h3>
             }
         </div>
