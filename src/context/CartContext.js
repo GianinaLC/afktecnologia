@@ -6,11 +6,11 @@ export const CartContextProvider = ({ children }) =>{
     const [cart, setCart] = useState([])
     console.log(cart)
 
-    const addItem = (productToAdd,id,quantity) => {
+    const addItem = (productToAdd) => {
         //queda resolver la actualizacion del producto con la nueva cantidad
-        if(isInCart(id)){
+        if(isInCart(productToAdd.id)){
             const newCart = cart.map((prod) => {
-                if(prod.id === id) {prod.quantity =  prod.quantity + quantity}
+                if(productToAdd.id === prod.id) {prod.quantity +=  productToAdd.quantity}
                 return prod
                 })
             setCart(newCart)
