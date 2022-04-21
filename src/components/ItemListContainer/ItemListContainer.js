@@ -22,27 +22,29 @@ const ItemListContainer = (props) =>{
 
     },[categoryId])
 
+    if(loading) {
+        return(
+            <div className='spinnerContainer'><p className='spinner'></p></div>
+        )
+    }
+
 
     return (
         <div>
-            
-                <div>
-                    <div className='imgFondo'>
-                        <div className='textFondo'>
-                            <h2 className='titlePag'>{props.greeting}</h2>
-                            <h2 className='titlePag'>{categoryId}</h2>
-                        </div>
-                    </div> 
+            <div>
+                <div className='imgFondo'>
+                    <div className='textFondo'>
+                        <h2 className='titlePag'>{props.greeting}</h2>
+                        <h2 className='titlePag'>{categoryId}</h2>
+                    </div>
+                </div> 
 
-                </div>
+            </div>
                 
-                {loading ? 
-                    <div className='spinnerContainer'><p className='spinner'></p></div>
-                :
-                products ? 
-                        <ItemList products={products}/>
-                    
-                    :   <h3>No se encontraron productos</h3>
+            {   products ? 
+                    <ItemList products={products}/>
+                
+                :   <h3>No se encontraron productos</h3>
             }
         </div>
     )
