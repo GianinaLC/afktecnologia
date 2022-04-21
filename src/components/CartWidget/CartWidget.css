@@ -8,6 +8,11 @@
     margin: 0 15px;
 }
 
-.cartStyle p{
-    margin: 0;
+.cartStyle a{
+    text-decoration: none;
+    color: black ;
+}
+
+.ocult{
+    display: none;
 }

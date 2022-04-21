@@ -21,6 +21,10 @@ const ItemDetailContainer = () => {
             setLoading(false)
         })
 
+        return (() => {
+            setItem()
+        })
+
     },[productId])
     
 
