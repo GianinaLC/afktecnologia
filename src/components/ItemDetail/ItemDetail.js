@@ -10,7 +10,7 @@ const ItemDetail = ({id, name, img, price, stock, description}) => {
     const { addItem, isInCart } = useContext(CartContext)
     
     const handleOnAdd = (count) => {
-        console.log(count)
+        console.log(typeof count)
         setQuantity(count)
 
         const productObj = {
@@ -29,7 +29,7 @@ const ItemDetail = ({id, name, img, price, stock, description}) => {
                 <div className='cardCount'>
                     <h3 className="titleDetailProd">{name}</h3>
                     <div>
-                        {isInCart(id) ? <Link to='/cart' className='goCart'><span>Ir al carrito</span></Link> : <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
+                        {quantity > 0 ? <Link to='/cart' className='goCart'><span>Ir al carrito</span></Link> : <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>}
                     </div>
                     <p className="price">
                         ${price} <span style={{color:'grey', fontSize:'16px'}}>Stock: {stock}</span>
