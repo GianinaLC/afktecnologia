@@ -6,15 +6,22 @@ export const CartContextProvider = ({ children }) =>{
     const [cart, setCart] = useState([])
     console.log(cart)
     const addItem = (productToAdd) => {
-        //queda resolver la actualizacion del producto con la nueva cantidad
-        if(isInCart(productToAdd.id)){
-            const newCart = cart.map((prod) => {
-                if(productToAdd.id === prod.id) {prod.quantity +=  productToAdd.quantity}
-                return prod
-                })
-            setCart(newCart)
-        }else{
+        
+        if(!isInCart(productToAdd.id)) {
             setCart([...cart, productToAdd])
+        } else {
+            const newProducts = cart.map(prod => {
+                if(prod.id === productToAdd.id) {
+                    const newProduct = {
+                        ...prod,
+                        quantity: productToAdd.quantity
+                    }
+                    return newProduct
+                } else {
+                    return prod
+                }
+            })
+            setCart(newProducts)
         }
 
     }
@@ -41,6 +48,10 @@ export const CartContextProvider = ({ children }) =>{
         setCart(products)
     }
 
+    const getQuantityProd= (id) => {
+        return cart.find(prod => prod.id === id)?.quantity
+    }
+
     const totalCost = () => {
         let totalCost = Object.values(cart).reduce((acc, {quantity, price}) => acc + quantity * price ,0)
         return totalCost
@@ -54,6 +65,7 @@ export const CartContextProvider = ({ children }) =>{
             isInCart,
             clearCart,
             removeItem,
+            getQuantityProd,
             totalCost
         }} >
             {children}
