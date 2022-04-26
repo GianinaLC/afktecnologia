@@ -1,0 +1,22 @@
+.prodCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #000000;
+    color: rgb(57,244,213);
+    width: 70%;
+    
+}
+
+.prodCart p{
+    width: 200px; 
+}
+
+.removeButton{
+    border-radius: 50%;
+    background-color: #f12fc08e;
+    color: #fff;
+    font-size: 20px;
+    
+}

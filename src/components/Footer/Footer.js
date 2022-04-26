@@ -3,6 +3,7 @@ import { BsFillGeoAltFill, BsFillCreditCard2BackFill, BsWhatsapp } from "react-i
 
 
 const Footer = () =>{
+    const imgFooter = '../../images/afklogo1.png'
 
     return(
         <footer className='bgFooter'>
@@ -14,7 +15,7 @@ const Footer = () =>{
                 
                 <div className='divInfo'>
                     <BsFillCreditCard2BackFill className='iconFooter'/>   
-                    <p>Todos los medios de pago</p>
+                    <p>Mercado Pago / Efectivo</p>
                     <p>Envíos a todo el país, gratis desde $6000</p> 
                 </div>
                         
@@ -23,6 +24,9 @@ const Footer = () =>{
                     <p>2613334455</p>
                     <p>Lun a Sab 8 a 20hs</p>
                 </div>
+            </div>
+            <div>
+                <img src={imgFooter} className='imgFoo'/>
             </div>
 
         </footer>
