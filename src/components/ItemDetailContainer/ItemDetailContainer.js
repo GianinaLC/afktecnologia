@@ -11,6 +11,7 @@ const ItemDetailContainer = () => {
 
     //const params = useParams() devuelve un objeto, entonces para no tener que escribir despues params.productId (props), lo desestructuro
     const {productId} = useParams()
+    const [loading, setLoading] = useState(false)
 
     useEffect (()=>{
         /* getItem(productId).then(prod=>{
@@ -26,6 +27,7 @@ const ItemDetailContainer = () => {
             console.log(response)
             const product = { id: response.id, ...response.data()}
             setItem(product)
+            setLoading(true)
         })
 
         return (() => {
@@ -37,11 +39,14 @@ const ItemDetailContainer = () => {
 
     return ( 
         <div className='detailContainer'>
-            {   
-                item ?
+            {   loading?
+
+                (item ?
                     <ItemDetail {...item}/> 
                 :
                 <h2>El producto no existe</h2>
+                ):
+                <div className='spinnerContainer'><p className='spinner'></p></div>
             }
         </div>
     )

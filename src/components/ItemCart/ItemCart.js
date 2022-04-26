@@ -1,29 +1,20 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
 import CartContext from "../../context/CartContext"
+import './ItemCart.css'
 
-const ItemCart = () => {
-    const { cart, totalCost, removeItem, clearCart} = useContext(CartContext)
+const ItemCart = ({id, name, price, quantity}) => {
+    
+    const { removeItem } = useContext(CartContext)
 
-    if (cart.length === 0) {
-        return (
-            <>
-                <h2>El carrito se encuentra vacío</h2>
-                <Link to={'/'} >Visita nuestra lista de producto </Link>
-            </>
-        )
-
-    }
     return (
         <>
-            <ul>
-                { cart.map(prod => <li key= {prod.id}> {prod.name} Cantidad: {prod.quantity} Precio unidad: $ {prod.price}  SubTotal: { prod.quantity * prod.price}  <button onClick={() => removeItem(prod.id)}>x</button> </li>)}
-                Total: {totalCost()}
-            </ul>
-            
-            <button onClick={()=> clearCart()}>Vaciar carrito</button>
-            <button >Realizar compra</button>{/*  falta darle evento al boton*/}
-
+            <div className='prodCart'>
+                <p style={{width: '100px'}}>Cantidad: {quantity}</p>
+                <p style={{width: '300px'}}>{name}</p>
+                <p className='priceProd'>Precio unidad: $ {price}</p>
+                <p className='subTotalProd'>SubTotal: <span>{ quantity * price}</span></p>
+                <button className="removeButton" onClick={() => removeItem(id)}>x</button> 
+            </div>
         </>
     )
 }
