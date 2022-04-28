@@ -53,8 +53,12 @@ export const CartContextProvider = ({ children }) =>{
     }
 
     const totalCost = () => {
-        let totalCost = Object.values(cart).reduce((acc, {quantity, price}) => acc + quantity * price ,0)
-        return totalCost
+        let total = 0
+        cart.forEach(prod => {
+            total = total + (prod.quantity*prod.price)
+        })
+
+        return total
     }
 
     return(
