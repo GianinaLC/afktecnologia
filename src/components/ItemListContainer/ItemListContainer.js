@@ -15,7 +15,6 @@ const ItemListContainer = (props) =>{
 
     useEffect (() => {
 
-        //en query puedo agregar un tercer parametro limit(1), para hacer paginacion
         const collectionRef = categoryId 
         ? query(collection(firestoreDb, 'products'), where('category', '==', categoryId))
         : collection(firestoreDb, 'products')

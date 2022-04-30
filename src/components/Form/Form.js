@@ -1,15 +1,17 @@
 import { useContext, useState } from "react"
 import './Form.css'
 import CartContext from "../../context/CartContext"
-import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore'
+import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/index'
+import { Link } from "react-router-dom"
 
 const Form = () => {
-    
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
+    const [orderId, setOrderId] = useState(null)
 
-    const { cart, totalCost} = useContext(CartContext)
+    const { cart, totalCost, clearCart} = useContext(CartContext)
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,6 +29,7 @@ const Form = () => {
 
         const objOrder = {
             buyer: input,
+            productsOrder: cart.map(prod => { return ({ id: prod.id, name: prod.name, quantity: prod.quantity, priceUni: prod.price }) }),
             total: totalCost(),
             date: new Date
         }
@@ -60,7 +63,9 @@ const Form = () => {
                 }
             }).then(({ id }) => {
                 batch.commit()
-                console.log(`El id de la orden es ${id}`)
+                const orderId = id
+                clearCart()
+                return setOrderId(orderId)
             }).catch(error => {
                 console.log(error)
             }).finally(() => {
@@ -69,10 +74,26 @@ const Form = () => {
     
     }
 
+    if (orderId) {
+        return (
+            <div >
+                <h1>CONFIRMACION</h1>
+                <div>
+                    Su pedido ha sido enviado correctamente
+                </div>
+                <h3>Nro orden: {orderId}</h3>
+                <div>
+                    <Link to='/'>Volver al inicio</Link>
+                </div>
+                
+            </div>
+
+        )
+    }
+    
     if(loading) {
         return <h1>Se esta generando su orden</h1>
     }
-
 
     return (
         <form onSubmit={handleSubmit}>
@@ -113,6 +134,7 @@ const Form = () => {
                     <button onClick={() => createOrder()} className="Button">Generar Orden</button>
                 </div>
             </div>
+            <div></div>
         </form>
     )
 }
