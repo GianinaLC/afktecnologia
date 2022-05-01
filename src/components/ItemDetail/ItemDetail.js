@@ -10,7 +10,6 @@ const ItemDetail = ({id, name, img, price, stock, description}) => {
     const { addItem, isInCart, getQuantityProd } = useContext(CartContext)
     
     const handleOnAdd = (count) => {
-        console.log(count)
         setQuantity(count)
 
         const productObj = {

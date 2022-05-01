@@ -16,10 +16,6 @@ const ItemCount = ({initial = 1, stock = 0, onAdd}) => {
         }
     }
 
-    /* if(stock === 0){
-        return <button>no hay stock</button>
-    } */
-
 
     return (
         <div className='containerCounter'>

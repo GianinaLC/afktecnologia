@@ -4,6 +4,9 @@ import CartContext from "../../context/CartContext"
 import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/index'
 import { Link } from "react-router-dom"
+import ItemCart from "../ItemCart/ItemCart"
+import Cart from "../Cart/Cart"
+
 
 const Form = () => {
     const [input, setInput] = useState('')
@@ -76,28 +79,41 @@ const Form = () => {
 
     if (orderId) {
         return (
-            <div >
-                <h1>CONFIRMACION</h1>
-                <div>
-                    Su pedido ha sido enviado correctamente
-                </div>
+             <div className='confirmId'>
+                <h2> CONFIRMACIÓN </h2>
+                <p> Su pedido ha sido enviado correctamente  </p>
                 <h3>Nro orden: {orderId}</h3>
                 <div>
                     <Link to='/'>Volver al inicio</Link>
                 </div>
-                
             </div>
-
         )
     }
     
     if(loading) {
-        return <h1>Se esta generando su orden</h1>
+        return (
+            <div className='spinnerContainer'>
+                <h3>Se esta generando su orden</h3>
+                <p className='spinner'></p>
+            </div>
+            )
+
     }
 
+    if (cart.length === 0) {
+        return <Cart/>
+    }
+
+    
+
     return (
-        <form onSubmit={handleSubmit}>
-            <div className='bgForm'>
+        <form onSubmit={handleSubmit} className='bgForm'>
+            <div className='divCheckout'>
+                <div className="cartForm">
+                    <h3>Confirmación de la compra</h3>
+                    {cart.map(prod => <ItemCart key={prod.id}{...prod} />)}
+                    <h4 className="totalCostForm">Total de la compra: $ {totalCost()}</h4>
+                </div>
                 <div className='divForm'>
                     <h3>Por favor ingrese sus datos</h3>
                     <label>Nombre:
@@ -131,10 +147,9 @@ const Form = () => {
                             value={input.telefono}
                         />
                     </label>
-                    <button onClick={() => createOrder()} className="Button">Generar Orden</button>
+                    <button onClick={() => createOrder()} className="buttonNeon">Generar Orden</button>
                 </div>
             </div>
-            <div></div>
         </form>
     )
 }
