@@ -32,10 +32,9 @@ const Cart = () => {
                 {cart.map(prod => <ItemCart key={prod.id}{...prod} />)}
             
                 <div className="divButtons">
-                    <p className="totalPrice">Total: {totalCost()}</p>
+                    <p className="totalPrice">Total: $ {totalCost()}</p>
                     <button className="buttonNeon " onClick={()=> clearCart()}> Vaciar carrito</button>
                     <Link to={'/form'} className="buttonNeon" > Realizar compra</Link>
-                    {/* <button onClick={() => createOrder()} className="Button"> Generar Orden</button> */}
                 </div>
             </div>
             

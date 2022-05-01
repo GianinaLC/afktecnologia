@@ -1,12 +1,69 @@
 .bgForm{
-    
-    height: 100vh;
+    background-image: url('../../../public/images/bgForm.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Jura', sans-serif;
 }
 
 .divForm{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 100vh;
+    width: 100%;
+    background-color:  #000000a1;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.divForm label{
+    padding: 10px;
+    width: 400px;
+}
+
+.divForm input{
+    padding: 10px;
+    width: 400px;
+}
+
+
+.divCheckout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: aqua;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.cartForm {
+    width: 100%;
+}
+
+.totalCostForm{
+    text-align: center;
+    text-transform: uppercase;
+    background-color:  #f12fc08e;
+    font-size: 40px;
+}
+
+.confirmId{
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    padding: 20px;
+    text-align: center;
+}
+.confirmId a{
+    text-decoration: none;
+    background-color: #f12fc08e;
+    border-radius: 25px;
+    padding: 15px;
+    color: black;
+}
+.confirmId h3{
+    text-decoration: none;
+    background-color: #f12fc08e;
+    padding: 15px;
+    color: aqua;
+    margin: 20px 0;
 }
