@@ -1,33 +1,32 @@
 import './ItemListContainer.css'
-import { useState, useEffect } from 'react'/* 
-import { getProducts } from '../../asyncmock'  */
-import { getDocs, collection, query, where } from 'firebase/firestore'
+import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import {useParams} from 'react-router-dom'
-import { firestoreDb } from '../../services/firebase'
+import { getProducts } from '../../services/firebase/firestore'
+import { useAsync } from '../../hooks/useAsync'
 
 const ItemListContainer = (props) =>{
 
     const [products, setProducts] = useState([]) 
-    const [show, setShow] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const {categoryId} = useParams();
 
-    useEffect (() => {
+    useAsync(
+        setLoading,
+        () => getProducts(categoryId),
+        setProducts,
+        () => console.log('Hubo un error en ItemListContainer')
+        [categoryId]
+    )
 
-        const collectionRef = categoryId 
-        ? query(collection(firestoreDb, 'products'), where('category', '==', categoryId))
-        : collection(firestoreDb, 'products')
+    if(loading) {
+        return <div className='spinnerContainer'><p className='spinner'></p></div>
+    }
 
-        getDocs(collectionRef).then(response => {
-            const products = response.docs.map(doc => {
-                return { id: doc.id, ...doc.data() }
-            })
-            setProducts(products)
-            setShow(true)
-        })
-
-    },[categoryId])
+    if(products.length === 0) {
+        return <h2>No hay productos</h2>
+    }
 
     return (
         <div>
@@ -38,19 +37,8 @@ const ItemListContainer = (props) =>{
                         <h2 className='titlePag'>{categoryId}</h2>
                     </div>
                 </div> 
-
-            </div>
-            
-                
-            {   show ?
-                ( products.length > 0 ? 
-                    <ItemList products={products}/>
-                
-                :   <h3>No se encontraron productos</h3>
-                )
-                : <div className='spinnerContainer'><p className='spinner'></p></div>
-
-            }
+            </div> 
+             <ItemList products={products}/>
         </div>
     )
 }
