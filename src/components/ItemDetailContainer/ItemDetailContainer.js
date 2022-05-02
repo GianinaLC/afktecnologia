@@ -1,42 +1,35 @@
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import './ItemDetailContainer.css'
 import {useParams} from 'react-router-dom'
-import { firestoreDb } from '../../services/firebase'
-import { getDoc, doc } from 'firebase/firestore'
+import { getItem} from '../../services/firebase/firestore'
+import { useAsync } from '../../hooks/useAsync'
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState()
 
     const {productId} = useParams()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
-    useEffect (()=>{
-        
-        getDoc(doc(firestoreDb, 'products', productId)).then(response => {
-            const product = { id: response.id, ...response.data()}
-            setItem(product)
-            setLoading(true)
-        })
+    useAsync(
+        setLoading,
+        () => getItem(productId),
+        setItem,
+        () => console.log('Hubo un error en ItemDetailContainer')
+        [productId]
+    )
 
-        return (() => {
-            setItem()
-        })
+    if(loading) {
+        return <div className='spinnerContainer'><p className='spinner'></p></div>
+    }
 
-    },[productId])
+    if(item.length === 0) {
+        return <h2>El producto no existe</h2>
+    }
     
-
     return ( 
         <div className='detailContainer'>
-            {   loading?
-
-                (item ?
-                    <ItemDetail {...item}/> 
-                :
-                <h2>El producto no existe</h2>
-                ):
-                <div className='spinnerContainer'><p className='spinner'></p></div>
-            }
+            <ItemDetail {...item}/> 
         </div>
     )
 }
