@@ -9,7 +9,7 @@ import Cart from "../Cart/Cart"
 
 
 const Form = () => {
-    const [input, setInput] = useState('')
+    const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''})
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState(null)
 

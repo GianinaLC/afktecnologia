@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
         setLoading,
         () => getItem(productId),
         setItem,
-        () => console.log('Hubo un error en ItemDetailContainer')
+        () => console.log('Hubo un error en ItemDetailContainer'),
         [productId]
     )
 

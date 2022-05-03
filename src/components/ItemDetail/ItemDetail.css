@@ -31,17 +31,18 @@
     text-align: center;
     padding: 10px;
     width: 300px;
+    color: black;
 } 
 
 .cardCount p{
     margin: 0;
 } 
 
-.cardCount span{
+ .cardCount span{
     padding-left: 10px;
     color:black;
-    font-Size:16px;
-}
+    font-Size:20px;
+} 
 
 .cardImgDetail{
     max-width: 300px;
@@ -77,16 +78,15 @@
     border-radius: 10px;
   }
   
-  /* Handle on hover */
  .cardDetailDescription::-webkit-scrollbar-thumb:hover {
     background: #f12fc0e3;
   }
 
 .goCart{
 display: inline-block;
-border-radius: 4px;
 background-color: #f12fc08e;
 border: none;
+border-radius: 25px;
 color: #FFFFFF;
 text-align: center;
 font-size: 16px;
@@ -118,4 +118,10 @@ padding-right: 25px;
 .goCart:hover span:after {
 opacity: 1;
 right: 0;
+}
+
+.sinStock{
+    background-color: rgba(128, 128, 128, 0.603);
+    border-radius: 25px;
+    text-transform: uppercase;
 }

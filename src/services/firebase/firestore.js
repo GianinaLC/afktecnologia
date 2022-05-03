@@ -32,3 +32,18 @@ export const getItem = (productId) => {
         })
     })
 }
+
+export const getCategoriesNavbar = () => {
+    return new Promise ((resolve,reject) => {
+     
+        getDocs(collection(firestoreDb, 'categories')).then(response => {
+            const categories = response.docs.map(doc => {
+                return { id: doc.id, ...doc.data()}
+            })
+            resolve(categories)
+        })
+        .catch(error => {
+            reject(error)
+        })
+    })
+}

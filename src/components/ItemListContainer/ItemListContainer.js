@@ -16,7 +16,7 @@ const ItemListContainer = (props) =>{
         setLoading,
         () => getProducts(categoryId),
         setProducts,
-        () => console.log('Hubo un error en ItemListContainer')
+        () => console.log('Hubo un error en ItemListContainer'),
         [categoryId]
     )
 
