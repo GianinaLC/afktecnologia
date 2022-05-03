@@ -25,7 +25,7 @@ const Form = () => {
         const value = event.target.value;
         setInput(values => ({...values, [name]: value}))
       }
-
+      
 
     const createOrder = () => {
         setLoading(true)
@@ -104,8 +104,6 @@ const Form = () => {
         return <Cart/>
     }
 
-    
-
     return (
         <form onSubmit={handleSubmit} className='bgForm'>
             <div className='divCheckout'>
@@ -124,14 +122,6 @@ const Form = () => {
                         />
                     </label>
 
-                    <label>Correo:
-                    <input type='text' 
-                            onChange={handleChange}
-                            name="correo"
-                            value={input.correo}
-                        />
-                    </label>
-
                     <label>Dirección:
                     <input type='text' 
                             onChange={handleChange}
@@ -145,6 +135,14 @@ const Form = () => {
                             onChange={handleChange}
                             name="telefono"
                             value={input.telefono}
+                        />
+                    </label>
+
+                    <label>Correo:
+                    <input type='text' 
+                            onChange={handleChange}
+                            name="correo"
+                            value={input.correo}
                         />
                     </label>
                     <button onClick={() => createOrder()} className="buttonNeon">Generar Orden</button>
