@@ -67,3 +67,11 @@
     color: aqua;
     margin: 20px 0;
 }
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: block;
+}
