@@ -9,7 +9,7 @@ const CartWidget = () =>{
     const { getQuantity } = useContext(CartContext)
 
     return (
-            <div className={`${getQuantity() === 0 ? 'ocult' : 'cartStyle'}`}>
+            <div className={getQuantity() === 0 ? 'ocult' : 'cartStyle'}>
                 <Link to='/cart'><FaShoppingCart /> { getQuantity() }</Link>
             </div>
             ) 
