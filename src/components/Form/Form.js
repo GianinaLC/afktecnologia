@@ -6,17 +6,19 @@ import { firestoreDb } from '../../services/firebase/index'
 import { Link } from "react-router-dom"
 import ItemCart from "../ItemCart/ItemCart"
 import Cart from "../Cart/Cart"
+import FormHook from "../FormHook/FormHook"
 
 
 const Form = () => {
-    const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''})
+    /* const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''}) */
+    
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState(null)
 
     const { cart, totalCost, clearCart} = useContext(CartContext)
 
 
-    const handleSubmit = (e) => {
+    /* const handleSubmit = (e) => {
         e.preventDefault()
     }
 
@@ -24,14 +26,14 @@ const Form = () => {
         const name = event.target.name;
         const value = event.target.value;
         setInput(values => ({...values, [name]: value}))
-      }
-      
+      } */
 
-    const createOrder = () => {
+
+    const createOrder = (input) => {
         setLoading(true)
 
         const objOrder = {
-            buyer: input,
+            buyer:{...input},
             productsOrder: cart.map(prod => { return ({ id: prod.id, name: prod.name, quantity: prod.quantity, priceUni: prod.price }) }),
             total: totalCost(),
             date: new Date
@@ -104,23 +106,30 @@ const Form = () => {
         return <Cart/>
     }
 
+    
+
     return (
-        <form onSubmit={handleSubmit} className='bgForm'>
+        <div className='bgForm'>
             <div className='divCheckout'>
                 <div className="cartForm">
                     <h3>Confirmación de la compra</h3>
                     {cart.map(prod => <ItemCart key={prod.id}{...prod} />)}
                     <h4 className="totalCostForm">Total de la compra: $ {totalCost()}</h4>
                 </div>
-                <div className='divForm'>
-                    <h3>Por favor ingrese sus datos</h3>
-                    <label>Nombre:
+                
+
+                    <FormHook />
+
+
+                    {/* <h3>Por favor ingrese sus datos</h3> */}
+                    {/* <label>Nombre:
                         <input type='text' 
                             onChange={handleChange}
                             name="nombre"
                             value={input.nombre}
                         />
                     </label>
+
 
                     <label>Dirección:
                     <input type='text' 
@@ -141,14 +150,43 @@ const Form = () => {
                     <label>Correo:
                     <input type='text' 
                             onChange={handleChange}
+                            onBlur={handleBlur} 
+                            aria-errormessage="emailErrorID"
+                            aria-invalid={emailField.hasError}
                             name="correo"
                             value={input.correo}
                         />
+                    <p
+                        id="msgID"
+                        aria-live="assertive"
+                        style={{ visibility: emailField.hasError ? "visible" : "hidden" }}
+                    >
+                        Ingresa un email válido
+                    </p>
                     </label>
+
+                    <label>Correo:
+                    <input type='text' 
+                            onChange={handleChange}
+                            onBlur={handleBlur} 
+                            aria-errormessage="emailErrorID"
+                            aria-invalid={emailField.hasError}
+                            name="correo"
+                            value={input.correo}
+                        />
+                    <p
+                        id="msgID"
+                        aria-live="assertive"
+                        style={{ visibility: emailField.hasError ? "visible" : "hidden" }}
+                    >
+                        Ingresa un email válido
+                    </p>
+                    </label> */}
+
                     <button onClick={() => createOrder()} className="buttonNeon">Generar Orden</button>
-                </div>
+                
             </div>
-        </form>
+        </div>
     )
 }
 
