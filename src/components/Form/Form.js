@@ -6,30 +6,23 @@ import { firestoreDb } from '../../services/firebase/index'
 import { Link } from "react-router-dom"
 import ItemCart from "../ItemCart/ItemCart"
 import Cart from "../Cart/Cart"
-import FormHook from "../FormHook/FormHook"
-
+import { useForm } from "react-hook-form"
 
 const Form = () => {
-    /* const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''}) */
     
+    const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''})
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState(null)
 
+    const { register, formState: { errors }, handleSubmit} = useForm()
     const { cart, totalCost, clearCart} = useContext(CartContext)
 
+    const onSubmit = (input) => {
+        setInput(input)
+        console.log(input)
+    } 
 
-    /* const handleSubmit = (e) => {
-        e.preventDefault()
-    }
-
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInput(values => ({...values, [name]: value}))
-      } */
-
-
-    const createOrder = (input) => {
+    const createOrder = () => {
         setLoading(true)
 
         const objOrder = {
@@ -106,8 +99,6 @@ const Form = () => {
         return <Cart/>
     }
 
-    
-
     return (
         <div className='bgForm'>
             <div className='divCheckout'>
@@ -116,74 +107,46 @@ const Form = () => {
                     {cart.map(prod => <ItemCart key={prod.id}{...prod} />)}
                     <h4 className="totalCostForm">Total de la compra: $ {totalCost()}</h4>
                 </div>
-                
 
-                    <FormHook />
+            <form onSubmit={handleSubmit(onSubmit)/* ((input) => setInput(input)) */}>
+                <div className="divForm">
+                    <h3>Por favor ingrese sus datos</h3>
+                    <label htmlFor="nombre">Nombre</label>
+                    <input {...register("nombre", { required: true , pattern:(/^[A-Za-z]+$/i ) })}/>
+                    {errors.nombre?.type === 'required' && "Ingrese Nombre"}
+                    {errors.nombre?.type === 'pattern' && "Ingrese solo letras"}
 
+                    <label htmlFor="direccion">Dirección</label>
+                    <input {...register("direccion", { required: true })}/>
+                    {errors.direccion?.type === 'required' && "Ingrese una dirección"}
 
-                    {/* <h3>Por favor ingrese sus datos</h3> */}
-                    {/* <label>Nombre:
-                        <input type='text' 
-                            onChange={handleChange}
-                            name="nombre"
-                            value={input.nombre}
-                        />
-                    </label>
+                    <label htmlFor="telefono">Teléfono</label>
+                    <input {...register("telefono", { required: true, minLength: 6, pattern: (/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/) })}/>
+                    {errors.telefono?.type === 'required' && "Ingrese un teléfono"}
+                    {errors.telefono?.type === 'minLength' && "Faltan numeros"}
+                    {errors.telefono?.type === 'pattern' && "Ingrese solo números"}
 
+                    <label htmlFor="correo">Correo</label>
+                    <input id="correo" {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                    {errors.correo?.type === 'required' && "Se requiere un correo" }
+                    {errors.correo?.type ===  "pattern" && 'Ingrese un correo válido'}
 
-                    <label>Dirección:
-                    <input type='text' 
-                            onChange={handleChange}
-                            name="direccion"
-                            value={input.direccion}
-                        />
-                    </label>
+                    <label htmlFor="correoConfirm">Confirme correo</label>
+                    <input id="correoConfirm" {...register("correoConfirm", { 
+                        required: true, 
+                        pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                    {errors.correoConfirm?.type === 'required' && "Se requiere un correo" }
+                    {errors.correoConfirm?.type === 'pattern' && "Su correo no es valido" }
+                </div>
 
-                    <label>Teléfono:
-                    <input type="text" 
-                            onChange={handleChange}
-                            name="telefono"
-                            value={input.telefono}
-                        />
-                    </label>
-
-                    <label>Correo:
-                    <input type='text' 
-                            onChange={handleChange}
-                            onBlur={handleBlur} 
-                            aria-errormessage="emailErrorID"
-                            aria-invalid={emailField.hasError}
-                            name="correo"
-                            value={input.correo}
-                        />
-                    <p
-                        id="msgID"
-                        aria-live="assertive"
-                        style={{ visibility: emailField.hasError ? "visible" : "hidden" }}
-                    >
-                        Ingresa un email válido
-                    </p>
-                    </label>
-
-                    <label>Correo:
-                    <input type='text' 
-                            onChange={handleChange}
-                            onBlur={handleBlur} 
-                            aria-errormessage="emailErrorID"
-                            aria-invalid={emailField.hasError}
-                            name="correo"
-                            value={input.correo}
-                        />
-                    <p
-                        id="msgID"
-                        aria-live="assertive"
-                        style={{ visibility: emailField.hasError ? "visible" : "hidden" }}
-                    >
-                        Ingresa un email válido
-                    </p>
-                    </label> */}
-
-                    <button onClick={() => createOrder()} className="buttonNeon">Generar Orden</button>
+                <button  className={(input.correoConfirm == input.correo)?'hidden': 'visible'}> Validar datos </button>
+                <div className={(input.correoConfirm == null || input.correoConfirm == input.correo)?'hidden': 'visible'}>
+                    El correo no coincide
+                </div>
+                <button type="button"
+                onClick={() => createOrder()} 
+                className={(input.correoConfirm == input.correo)?'buttonNeon': 'hidden'}>Generar Orden</button>
+            </form>
                 
             </div>
         </div>
