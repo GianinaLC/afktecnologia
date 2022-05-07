@@ -28,33 +28,46 @@ const FormHook = () => {
 
     const onSubmit = (data, e) => {
         console.log(data)
+        const name = e.target.name;
+        const value = e.target.value;
+        setInput(values => ({...values, [name]: value}))
     /* e.target.reset() */
     }
+
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="divForm">
                 <h3>Por favor ingrese sus datos</h3>
-                <label>Nombre</label>
-                <input {...register("nombre", { required: true , message: 'Nombre obligatorio'})}
+                <label htmlFor="nombre">Nombre</label>
+                <input id="nombre" {...register("nombre", { required: true , message: 'Nombre obligatorio'})}
                 defaultValue={input.nombre} />
                 {errors.nombre?.type === 'required' && "Ingrese Nombre"}
 
-                <label>Dirección</label>
-                <input {...register("direccion", { required: true })}
+                <label htmlFor="direccion">Dirección</label>
+                <input id="direccion" {...register("direccion", { required: true })}
                 defaultValue={input.direccion} />
                 {errors.direccion?.type === 'required' && "Ingrese una dirección"}
 
-                <label>Teléfono</label>
-                <input {...register("telefono", { required: true })}
+                <label htmlFor="telefono">Teléfono</label>
+                <input id="telefono" {...register("telefono", { required: true, pattern: (/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/) })}
                 defaultValue={input.telefono} />
                 {errors.telefono?.type === 'required' && "Ingrese un teléfono"}
+                {errors.telefono?.type === 'pattern' && "Ingrese solo números"}
 
-                <label>Correo</label>
-                <input {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} 
+                <label htmlFor="correo">Correo</label>
+                <input id="correo" {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} 
                 defaultValue={input.correo}/>
                 {errors.correo?.type === 'required' && "Se requiere un correo" }
+                {errors.correo?.type ===  "pattern" && <span>Ingrese un correo válido</span> }
+
+                <label htmlFor="correoConfirm">Confirme correo</label>
+                <input id="correoConfirm" {...register("correoConfirm", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} 
+                defaultValue={input.correoConfirm}/>
+                {errors.correoConfirm?.type === 'pattern' && "Su correo no es valido" }
             </div>
+
+            <button>Enviar</button>
 
             {/* <input 
             name= 'nombre'
@@ -121,7 +134,7 @@ const FormHook = () => {
                 {errors.correo && errors.correo.message}
             </span>
              */}
-            <button>Enviar</button>
+            
         </form>
     )
 }
