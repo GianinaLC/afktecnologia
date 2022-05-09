@@ -1,6 +1,6 @@
 .containerCounter{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 10px;
     align-items: center;
 }
@@ -31,13 +31,15 @@
 }
 
 .buttonAddCart{
-    padding: 15px 10px;
+    padding: 10px;
     width: 200px;
     text-decoration: none;
     outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: #95ddcd;
     border-radius: 25px;
 }
 

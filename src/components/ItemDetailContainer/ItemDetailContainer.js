@@ -6,10 +6,10 @@ import { getItem} from '../../services/firebase/firestore'
 import { useAsync } from '../../hooks/useAsync'
 
 const ItemDetailContainer = () => {
-    const [item, setItem] = useState()
+    const [ item, setItem ] = useState()
 
-    const {productId} = useParams()
-    const [loading, setLoading] = useState(true)
+    const { productId } = useParams()
+    const [ loading, setLoading ] = useState(true)
 
     useAsync(
         setLoading,
@@ -24,15 +24,14 @@ const ItemDetailContainer = () => {
     }
 
     if(item.length === 0) {
-        return <h2>El producto no existe</h2>
+        return <h2> El producto no existe </h2>
     }
     
     return ( 
-        <div className='detailContainer'>
-            <ItemDetail {...item}/> 
+        <div className='itemDetailContainer'>
+            <ItemDetail {...item} /> 
         </div>
     )
 }
-
 
 export default ItemDetailContainer

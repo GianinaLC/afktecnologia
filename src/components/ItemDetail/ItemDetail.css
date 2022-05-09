@@ -1,12 +1,13 @@
-.cardDetail{
+.cardItemDetail{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 20px;
+    align-items: center;
+    padding: 20px;
 }
 
-.cardDetailText{
+.cardItemDetailText{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -14,7 +15,7 @@
     justify-content: space-around;
     padding: 10px;
     margin: 20px;
-    align-items: center;
+    width: 70%;
     background-color: #fff;
     align-items: flex-start;
     border: 1px solid black;
@@ -38,7 +39,7 @@
     margin: 0;
 } 
 
- .cardCount span{
+.cardCount span{
     padding-left: 10px;
     color:black;
     font-Size:20px;
@@ -48,76 +49,53 @@
     max-width: 300px;
     height: 300px;
     padding: 10px;
-    
 } 
 
 .cardDetailDescription{
     padding: 20px;
-    width: 400px;
+    width: 70%;
     font-size: 18px;
     background-color: #95ddcd;
     border-radius: 25px;
     margin: 20px;
-    max-height: 400px;
     overflow: auto;
-    
+    border: 1px black solid;
 }
 
-.cardDetailDescription::-webkit-scrollbar {
-    width: 5px;
-  }
-
-.cardDetailDescription::-webkit-scrollbar-track {
-    box-shadow:inset 0 0 5px rgba(112, 108, 111, 0.5);
-    border-radius: 10px;
-    height: 20px;
-  }
-
-.cardDetailDescription::-webkit-scrollbar-thumb {
-    background: #f12fc08e;
-    border-radius: 10px;
-  }
-  
- .cardDetailDescription::-webkit-scrollbar-thumb:hover {
-    background: #f12fc0e3;
-  }
 
 .goCart{
-display: inline-block;
-background-color: #f12fc08e;
-border: none;
-border-radius: 25px;
-color: #FFFFFF;
-text-align: center;
-font-size: 16px;
-padding: 10px;
-width: 150px;
-transition: all 0.5s;
-margin: 5px;
+    display: inline-block;
+    background-color: #f12fc08e;
+    border-radius: 25px; 
+    width: 150px;
+    transition: all 0.5s;
+    margin-top: 20px;
+    right: 0;
 }
 
 .goCart span {
-display: inline-block;
-position: relative;
-transition: 0.5s;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    font-size: 14px;
 }
 
 .goCart span:after {
-content: '\00bb';
-position: absolute;
-opacity: 0;
-top: 0;
-right: -20px;
-transition: 0.5s;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 
 .goCart:hover span {
-padding-right: 25px;
+    padding-right: 25px;
 }
 
 .goCart:hover span:after {
-opacity: 1;
-right: 0;
+    opacity: 1;
+    right: 0;
 }
 
 .sinStock{
