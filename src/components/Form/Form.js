@@ -9,24 +9,22 @@ import Cart from "../Cart/Cart"
 import { useForm } from "react-hook-form"
 
 const Form = () => {
-    
-    const [input, setInput] = useState({nombre: '', direccion: '', correo: '', telefono: ''})
-    const [loading, setLoading] = useState(false)
-    const [orderId, setOrderId] = useState(null)
+    const [ input, setInput ] = useState({nombre: '', direccion: '', correo: '', telefono: ''})
+    const [ loading, setLoading ] = useState(false)
+    const [ orderId, setOrderId ] = useState(null)
 
-    const { register, formState: { errors }, handleSubmit} = useForm()
-    const { cart, totalCost, clearCart} = useContext(CartContext)
+    const { register, formState: { errors }, handleSubmit } = useForm()
+    const { cart, totalCost, clearCart } = useContext(CartContext)
 
     const onSubmit = (input) => {
         setInput(input)
-        console.log(input)
     } 
 
     const createOrder = () => {
         setLoading(true)
 
         const objOrder = {
-            buyer:{...input},
+            buyer: {...input},
             productsOrder: cart.map(prod => { return ({ id: prod.id, name: prod.name, quantity: prod.quantity, priceUni: prod.price }) }),
             total: totalCost(),
             date: new Date
@@ -76,10 +74,10 @@ const Form = () => {
         return (
              <div className='confirmId'>
                 <h2> CONFIRMACIÓN </h2>
-                <p> Su pedido ha sido enviado correctamente  </p>
-                <h3>Nro orden: {orderId}</h3>
+                <p> Su pedido ha sido enviado correctamente </p>
+                <h3> Nro orden: { orderId }</h3>
                 <div>
-                    <Link to='/'>Volver al inicio</Link>
+                    <Link to='/'> Volver al inicio </Link>
                 </div>
             </div>
         )
@@ -88,66 +86,67 @@ const Form = () => {
     if(loading) {
         return (
             <div className='spinnerContainer'>
-                <h3>Se esta generando su orden</h3>
+                <h3> Se esta generando su orden </h3>
                 <p className='spinner'></p>
             </div>
-            )
+        )
 
     }
 
     if (cart.length === 0) {
-        return <Cart/>
+        return < Cart />
     }
 
     return (
         <div className='bgForm'>
             <div className='divCheckout'>
                 <div className="cartForm">
-                    <h3>Confirmación de la compra</h3>
-                    {cart.map(prod => <ItemCart key={prod.id}{...prod} />)}
-                    <h4 className="totalCostForm">Total de la compra: $ {totalCost()}</h4>
+                    <h3> Confirmación de la compra </h3>
+                    { cart.map(prod => <ItemCart key={prod.id}{...prod} />) }
+                    <h4 className="totalCostForm"> Total de la compra: $ { totalCost() }</h4>
                 </div>
 
-            <form onSubmit={handleSubmit(onSubmit)/* ((input) => setInput(input)) */}>
-                <div className="divForm">
-                    <h3>Por favor ingrese sus datos</h3>
-                    <label htmlFor="nombre">Nombre</label>
-                    <input {...register("nombre", { required: true , pattern:(/^[A-Za-z]+$/i ) })}/>
-                    {errors.nombre?.type === 'required' && "Ingrese Nombre"}
-                    {errors.nombre?.type === 'pattern' && "Ingrese solo letras"}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="divForm">
+                        <h3> Por favor ingrese sus datos </h3>
+                        <label htmlFor="nombre"> Nombre </label>
+                        <input {...register("nombre", { required: true , pattern:(/^[A-Za-z]+$/i ) })} />
+                        { errors.nombre?.type === 'required' && <span className="messageError"> Ingrese Nombre </span> }
+                        { errors.nombre?.type === 'pattern' && <span className="messageError"> Ingrese solo letras </span> }
 
-                    <label htmlFor="direccion">Dirección</label>
-                    <input {...register("direccion", { required: true })}/>
-                    {errors.direccion?.type === 'required' && "Ingrese una dirección"}
+                        <label htmlFor="direccion"> Dirección </label>
+                        <input {...register("direccion", { required: true })} />
+                        { errors.direccion?.type === 'required' && <span className="messageError"> Ingrese una dirección </span> }
 
-                    <label htmlFor="telefono">Teléfono</label>
-                    <input {...register("telefono", { required: true, minLength: 6, pattern: (/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/) })}/>
-                    {errors.telefono?.type === 'required' && "Ingrese un teléfono"}
-                    {errors.telefono?.type === 'minLength' && "Faltan numeros"}
-                    {errors.telefono?.type === 'pattern' && "Ingrese solo números"}
+                        <label htmlFor="telefono"> Teléfono </label>
+                        <input {...register("telefono", { required: true, pattern: (/^[+]?([0-9]+(?:[0-9]*)?|\.[0-9]+)$/) })} />
+                        { errors.telefono?.type === 'required' && <span className="messageError"> Ingrese un teléfono </span> }             
+                        { errors.telefono?.type === 'pattern' && <span className="messageError"> Ingrese solo números</span> }
 
-                    <label htmlFor="correo">Correo</label>
-                    <input id="correo" {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
-                    {errors.correo?.type === 'required' && "Se requiere un correo" }
-                    {errors.correo?.type ===  "pattern" && 'Ingrese un correo válido'}
+                        <label htmlFor="correo"> Correo </label>
+                        <input id="correo" {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                        { errors.correo?.type === 'required' && <span className="messageError"> Ingrese un correo </span> }
+                        { errors.correo?.type ===  "pattern" && <span className="messageError"> Ingrese un correo válido </span> }
 
-                    <label htmlFor="correoConfirm">Confirme correo</label>
-                    <input id="correoConfirm" {...register("correoConfirm", { 
-                        required: true, 
-                        pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
-                    {errors.correoConfirm?.type === 'required' && "Se requiere un correo" }
-                    {errors.correoConfirm?.type === 'pattern' && "Su correo no es valido" }
-                </div>
+                        <label htmlFor="correoConfirm"> Confirme correo </label>
+                        <input id="correoConfirm" {...register("correoConfirm", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                        { errors.correoConfirm?.type === 'required' && <span className="messageError"> Ingrese un correo </span> }
+                        { errors.correoConfirm?.type === 'pattern' && <span className="messageError"> Su correo no es válido </span> }
+                    </div>
 
-                <button  className={(input.correoConfirm == input.correo)?'hidden': 'visible'}> Validar datos </button>
-                <div className={(input.correoConfirm == null || input.correoConfirm == input.correo)?'hidden': 'visible'}>
-                    El correo no coincide
-                </div>
-                <button type="button"
-                onClick={() => createOrder()} 
-                className={(input.correoConfirm == input.correo)?'buttonNeon': 'hidden'}>Generar Orden</button>
-            </form>
-                
+                    <div className="divButtonForm">
+                        <div className="divButtonValidate">
+                            <button className= {(input.correoConfirm === input.correo) ? 'hidden' : 'visible buttonValidateData' }> Validar datos </button>
+
+                            <div style={{backgroundColor: '#000000a1', padding: '10px'}} className= {(input.correoConfirm == null || input.correoConfirm === input.correo) ? 'hidden' : 'visible messageError'} > 
+                                El correo no coincide
+                            </div>
+                        </div>
+                        
+                        <button type="button" onClick= {() => createOrder() } 
+                        className= {(input.correoConfirm === input.correo) ? 'buttonNeon' : 'hidden'} > Generar Orden </button>
+                    </div>
+                </form>
             </div>
         </div>
     )

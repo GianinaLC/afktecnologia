@@ -19,6 +19,10 @@
     transition: width 2s;
 }
 
+.optionCategory:hover {
+    color: #95ddcd;
+}
+
 .optionCategory:hover{
     border-bottom: 2px solid rgba(57, 92, 83, 0.349);
     width: 150px;
@@ -35,4 +39,8 @@
     cursor: pointer;
     color: aliceblue;
     background-color: #f12fc08e;
+}
+
+.activeCategory:hover{
+    color: #95ddcd;
 }
