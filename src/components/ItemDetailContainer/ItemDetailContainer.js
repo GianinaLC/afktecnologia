@@ -1,8 +1,9 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import './ItemDetailContainer.css'
-import {useParams} from 'react-router-dom'
-import { getItem} from '../../services/firebase/firestore'
+import Spinner from '../Spinner/Spinner'
+import { useParams } from 'react-router-dom'
+import { getItem } from '../../services/firebase/firestore'
 import { useAsync } from '../../hooks/useAsync'
 
 const ItemDetailContainer = () => {
@@ -11,7 +12,7 @@ const ItemDetailContainer = () => {
     const { productId } = useParams()
     const [ loading, setLoading ] = useState(true)
 
-    useAsync(
+    useAsync (
         setLoading,
         () => getItem(productId),
         setItem,
@@ -20,7 +21,7 @@ const ItemDetailContainer = () => {
     )
 
     if(loading) {
-        return <div className='spinnerContainer'><p className='spinner'></p></div>
+        return < Spinner />
     }
 
     if(item.length === 0) {
@@ -29,7 +30,7 @@ const ItemDetailContainer = () => {
     
     return ( 
         <div className='itemDetailContainer'>
-            <ItemDetail {...item} /> 
+            < ItemDetail {...item} /> 
         </div>
     )
 }

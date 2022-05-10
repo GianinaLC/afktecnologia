@@ -2,7 +2,6 @@ import './Notification.css'
 import {  useState, createContext, useContext } from 'react'
 
 const Notification = ({ message, severity}) => {
-
     if(message === ''){
         return null 
     }
@@ -23,6 +22,7 @@ export const NotificationProvider = ({ children }) => {
     const setNotification = (sev, msg) => {
         setSeverity(sev)
         setMessage(msg)
+
         setTimeout(()=>{
             setMessage('')
         },1000)
@@ -31,7 +31,7 @@ export const NotificationProvider = ({ children }) => {
 
     return (
         <NotificationContext.Provider value={{ setNotification }}>
-            <Notification message={ message }  severity={ severity } />
+            <Notification message={message}  severity={severity} />
             { children }
         </NotificationContext.Provider>
     )

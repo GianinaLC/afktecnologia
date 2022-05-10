@@ -1,4 +1,4 @@
-.Logo-app{
+.logo-app{
     width: 120px;
     padding: 10px;
 }
@@ -9,7 +9,7 @@
 
 .optionCategory{
     padding: 8px 10px;
-    color: aliceblue;
+    color: #ffffff;
     width: 130px;
     text-decoration: none;
     text-align: center;
@@ -20,7 +20,7 @@
 }
 
 .optionCategory:hover {
-    color: #95ddcd;
+    color: rgb(57,244,213);
 }
 
 .optionCategory:hover{
@@ -37,7 +37,7 @@
     margin: 4px 2px;
     border-radius: 25px;
     cursor: pointer;
-    color: aliceblue;
+    color: #ffffff;
     background-color: #f12fc08e;
 }
 

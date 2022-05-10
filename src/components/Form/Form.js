@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
 import './Form.css'
+import Spinner from '../Spinner/Spinner'
 import CartContext from "../../context/CartContext"
-import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from 'firebase/firestore'
+import { getDocs, writeBatch, query, where, collection, documentId, addDoc } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase/index'
 import { Link } from "react-router-dom"
 import ItemCart from "../ItemCart/ItemCart"
@@ -67,7 +68,6 @@ const Form = () => {
             }).finally(() => {
                 setLoading(false)
             })
-    
     }
 
     if (orderId) {
@@ -85,12 +85,11 @@ const Form = () => {
     
     if(loading) {
         return (
-            <div className='spinnerContainer'>
-                <h3> Se esta generando su orden </h3>
-                <p className='spinner'></p>
+            <div className="confirmId">
+                <h2> SE ESTÁ GENERANDO SU ORDEN </h2>
+                < Spinner />
             </div>
         )
-
     }
 
     if (cart.length === 0) {
@@ -103,7 +102,7 @@ const Form = () => {
                 <div className="cartForm">
                     <h3> Confirmación de la compra </h3>
                     { cart.map(prod => <ItemCart key={prod.id}{...prod} />) }
-                    <h4 className="totalCostForm"> Total de la compra: $ { totalCost() }</h4>
+                    <h4 className="totalCostForm"> Total de la compra: $ {totalCost()}</h4>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,15 +120,15 @@ const Form = () => {
                         <label htmlFor="telefono"> Teléfono </label>
                         <input {...register("telefono", { required: true, pattern: (/^[+]?([0-9]+(?:[0-9]*)?|\.[0-9]+)$/) })} />
                         { errors.telefono?.type === 'required' && <span className="messageError"> Ingrese un teléfono </span> }             
-                        { errors.telefono?.type === 'pattern' && <span className="messageError"> Ingrese solo números</span> }
+                        { errors.telefono?.type === 'pattern' && <span className="messageError"> Ingrese solo números </span> }
 
                         <label htmlFor="correo"> Correo </label>
-                        <input id="correo" {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                        <input {...register("correo", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
                         { errors.correo?.type === 'required' && <span className="messageError"> Ingrese un correo </span> }
                         { errors.correo?.type ===  "pattern" && <span className="messageError"> Ingrese un correo válido </span> }
 
                         <label htmlFor="correoConfirm"> Confirme correo </label>
-                        <input id="correoConfirm" {...register("correoConfirm", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
+                        <input {...register("correoConfirm", { required: true, pattern: (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/) })} />
                         { errors.correoConfirm?.type === 'required' && <span className="messageError"> Ingrese un correo </span> }
                         { errors.correoConfirm?.type === 'pattern' && <span className="messageError"> Su correo no es válido </span> }
                     </div>
@@ -143,7 +142,7 @@ const Form = () => {
                             </div>
                         </div>
                         
-                        <button type="button" onClick= {() => createOrder() } 
+                        <button type="button" onClick= {() => createOrder()} 
                         className= {(input.correoConfirm === input.correo) ? 'buttonNeon' : 'hidden'} > Generar Orden </button>
                     </div>
                 </form>
