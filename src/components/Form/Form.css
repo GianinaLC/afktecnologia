@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: aqua;
+    color: rgb(57,244,213);
     align-items: center;
     padding: 20px;
 }
@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color:  #000000a1;
+    background-color: #000000a1;
     padding: 20px;
     margin-top: 10px;
 }
@@ -46,11 +46,24 @@
 }
 
 .confirmId{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: 'Jura', sans-serif;
     font-size: 30px;
     padding: 20px;
-    text-align: center;
+    height: 100vh;
 }
+
+.confirmId h3{
+    text-decoration: none;
+    background-color: #f12fc08e;
+    padding: 15px;
+    color: rgb(57,244,213);
+    margin: 20px 0;
+}
+
 .confirmId a{
     text-decoration: none;
     background-color: #f12fc08e;
@@ -58,24 +71,16 @@
     padding: 15px;
     color: black;
 }
-.confirmId h3{
-    text-decoration: none;
-    background-color: #f12fc08e;
+
+.confirmId a:hover {
+    border-radius: 25px;
     padding: 15px;
-    color: aqua;
-    margin: 20px 0;
+    color: black;
+    background-color: rgb(57,244,213);
 }
 
 .messageError{
     color: rgba(248, 194, 194, 0.74);
-}
-
-.hidden{
-    display: none;
-}
-
-.visible{
-    display: block;
 }
 
 .divButtonForm{

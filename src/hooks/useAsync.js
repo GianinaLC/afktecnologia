@@ -22,5 +22,5 @@ export const useAsync = (
         return () => {
             isActive = false
         }
-    }, dependencies) //eslint-disable-line
+    }, dependencies) 
 }

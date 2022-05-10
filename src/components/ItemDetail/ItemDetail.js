@@ -1,13 +1,12 @@
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
-import {Link} from 'react-router-dom'
-import { useContext} from 'react'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
 import { useNotification } from '../../notification/Notification'
 import { FaCartPlus } from 'react-icons/fa';
 
-const ItemDetail = ({ id, name, img, price, stock, description, severity }) => {
-    
+const ItemDetail = ({ id, name, img, price, stock, description }) => {
     const { addItem, getQuantityProd, getQuantity } = useContext(CartContext)
 
     const { setNotification } = useNotification()
@@ -19,14 +18,14 @@ const ItemDetail = ({ id, name, img, price, stock, description, severity }) => {
         }
 
         addItem(productObj)
-        setNotification('success', <FaCartPlus />)
+        setNotification('success', < FaCartPlus />)
     }
     
     return(
         <div className="cardItemDetail">
             <div className='cardItemDetailText'>
                 <div>
-                    <img src={img} alt={name} className="cardImgDetail"/>
+                    <img src={img} alt={name} className="cardImgDetail" />
                 </div>
                 <div className='cardCount'>
                     <h3 className="titleDetailProd"> {name} </h3>
@@ -40,7 +39,7 @@ const ItemDetail = ({ id, name, img, price, stock, description, severity }) => {
                     <p className="price">
                         ${price} <span style={{color:'grey', fontSize:'16px'}}> Stock: {stock}</span>
                     </p>
-                    <div className={getQuantity() === 0 ? 'ocult' : 'goCart'}>
+                    <div className={getQuantity() === 0 ? 'hidden' : 'goCart'}>
                         <Link to='/cart'><span> Ir al carrito </span></Link>
                     </div>
                 </div>

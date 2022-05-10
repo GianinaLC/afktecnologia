@@ -32,7 +32,6 @@
     margin: 0px 20px;
 }
 
-
 .cardIndividual:hover{
     box-shadow: 0 8px 16px 0 rgba(182, 214, 206, 0.445);
 } 
@@ -65,6 +64,6 @@
 .detailButton:hover {
     background-color: #f12fc08e;
     transition-duration: 0.4s;
-  }
+}
   
 
