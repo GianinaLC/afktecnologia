@@ -19,3 +19,8 @@
     font-size: 20px;
     
 }
+
+.removeButton:hover{
+    background-color: #95ddcd;
+    color: black;
+}

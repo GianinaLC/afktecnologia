@@ -6,6 +6,26 @@
     font-family: 'Jura', sans-serif;
 }
 
+.divCheckout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: aqua;
+    align-items: center;
+    padding: 20px;
+}
+
+.cartForm {
+    width: 100%;
+}
+
+.totalCostForm{
+    text-align: center;
+    text-transform: uppercase;
+    background-color:  #f12fc08e;
+    font-size: 40px;
+}
+
 .divForm{
     display: flex;
     flex-direction: column;
@@ -23,28 +43,6 @@
 .divForm input{
     padding: 10px;
     width: 400px;
-}
-
-
-.divCheckout{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: aqua;
-    align-items: center;
-    padding: 20px;
-}
-
-
-.cartForm {
-    width: 100%;
-}
-
-.totalCostForm{
-    text-align: center;
-    text-transform: uppercase;
-    background-color:  #f12fc08e;
-    font-size: 40px;
 }
 
 .confirmId{
@@ -68,6 +66,10 @@
     margin: 20px 0;
 }
 
+.messageError{
+    color: rgba(248, 194, 194, 0.74);
+}
+
 .hidden{
     display: none;
 }
@@ -75,3 +77,32 @@
 .visible{
     display: block;
 }
+
+.divButtonForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.divButtonValidate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttonValidateData{
+    margin: 5px 10px 2px 0px;
+    color: black ;
+    border: rgb(57,244,213) 4px solid;
+    border-radius: 4px ;
+    padding: 10px;
+    width: 200px;
+    background-color: #f12fc0;
+    font-weight: bold;
+}
+
+.buttonValidateData:hover{
+    background-color: rgb(57,244,213);
+    color:black
+}
+
