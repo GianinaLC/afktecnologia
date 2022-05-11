@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# **AFK Tecnología**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## _Proyecto ecommerce para el curso de CoderHouse: React JS_
 
-## Available Scripts
+## Requerimiento
+NodeJS
 
-In the project directory, you can run:
+## Instalación 🔧
+1- Para ello debes clonar el repositorio, ingresando a una terminal y ejecutando:
 
-### `npm start`
+```
+git clone `https://github.com/GianinaLC/afktecnologia.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2 - En la carpeta donde se encuentra "package.json" ejecutar en la terminal:
 
-### `npm test`
+```
+npm install
+```
+3 - Una vez finalizado, para abrir el proyecto ejecutar:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm start
+```
 
-### `npm run build`
+## Dependencias utilizadas
+```
+    react-bootstrap 
+    react-icons
+    react-router-dom
+    react-firebase
+    react-hook-form
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- react-bootstrap :point_right: Estilo menú hamburguesa
+- react-icons :point_right: Íconos para el carrito y footer
+- react-router-dom :point_right: Routing en el browser
+- react-firebase :point_right:  Base de datos
+- react-hook-form :point_right: Reduce código, mas fácil de mostrar los errores del input, reduce el número de re-render
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Firebase / Firestore
+Collección : **_categories_**
 
-### `npm run eject`
+Documento: id : **_nombre de la categoria_**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+La categoria va a tener campo tipo y valor
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| CAMPO | TIPO | VALOR |
+| ------ | ------ | ------ |
+| description | string | nombre de la categoría
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Collección : **_products_**
 
-## Learn More
+Documento: **_id_** generado automático
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+El producto va a tener campo tipo y valor
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| CAMPO | TIPO | VALOR |
+| ------ | ------ | ------ |
+| name | string | nombre del producto
+| stock | number| cantidad en stock
+| img | string | /images/nombreprod.png (ruta de la imágen)
+| price | number | precio unitario
+| category | string | categoría a la que pertenece
+| description | string | descripción del producto
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+![Compra en AFK](./docs/afkcompra.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Análisis y Componentes 🔩
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+La ruta base ‘ / ’ es el inicio de la aplicación.
+Se visualiza la lista contenedora de los items, la cual cuenta con la ímagen de cada producto, nombre, precio y un botón que te llevará a los detalles del mismo.
 
-### Advanced Configuration
+- ItemListContainer - Contenedor de los productos que se cargan mediante ItemList y también filtra por categoría. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    - ItemList - Realiza un map de todos los productos para poder mostrarlos en el contenedor.
 
-### Deployment
+    - Item - Card del producto con el Link para ver detalles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+El navbar contiene el logo del ecommerce, que está linkeado al inicio de la app ‘ / ’, también cuenta con dos secciones con los nombres de las categorías que provienen del firestore
+‘ categories/:id ’
+‘ /categories/:categoryId ’.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- NavBar - Setea las categorias. Contiene el Cart Widget.
+
+    - CartWidget - Muestra la cantidad de productos existente en el carrito, de no haber productos, se oculta.
+
+Al ingresar al detalle del producto seleccionado
+‘ /item/:id ’ ,
+se muestra la imágen del mismo, nombre, precio, cantidad en stock, la descripción del producto y un contador para ingresar la cantidad deseada a comprar, una vez decidida la cantidad, dandole click al botón de agregar al carrito, éste será añadido. 
+
+- ItemDetailContainer - Contenedor del ItemDetail, muestra el producto seleccionado.
+    
+    - ItemDetail - Retorna el detalle del producto junto con el ItemCount.
+
+    - ItemCount - Es el contador para agregar productos al carrito.
+
+
+Para ver el contenido del carrito, el cual se aloja en 
+‘ /cart ’,
+se puede ir desde el ícono o tambíen desde el link que aparece debajo del precio.
+En esta ruta se muestra una lista con los productos agregados, encontrarás la cantidad de cada ítem, nombre, precio unitario, el subtotal y la suma total de la compra.
+Se puede eliminar de la lista aquél producto no deseado desde el botón que contiene la cruz (x) o bien vaciarlo.
+
+Al encontrarse vacío, deja un link para volver a la página principal.
+
+- Cart - Contenedor del ItemCart.
+
+    - ItemCart - Muestra cada producto seleccionado.
+
+
+Si queremos seguir con la compra, con los productos que tenemos en el carrito, damos click al botón Realizar compra y la nueva ruta será
+‘ /form ’,
+donde se muestra la lista de los productos a comprar y un formulario a llenar con los datos del comprador.
+
+
+- Form - Los campos son requeridos, una vez lleno el formulario, se validan los datos, si algún dato es incorrecto, se muestra dónde está el error, se lo llena nuevamente y se valida de nuevo. Si éstos son correctos, se guarda el estado de los inputs y aparece el botón para generar la orden de compra. 
+
+    - función createOrder - Contiene la lógica para generar la orden de compra. Chequea si hay stock del producto, lo actualiza, y devuelve el _id_ de la orden. Esta orden contiene los datos del comprador y los productos seleccionados, con su respectivo precio, fecha y costo final. 
+
+
+
+context - CartContext - Comparte la lógica que utilizarán varios componentes.
+
+- Footer - Simplemente detalla sobre el envío, contacto y logo.
+
+- Spinner - Contiene el dicho spinner para luego aplicarlo en cada loading.
+
+
+## Construido con 🛠️
+
+**HTML**
+
+**CSS**
+
+**JAVASCRIPT**
+
+**REACT JS**
+
+**BOOTSTRAP**
+
+## Autor :computer:
+
+_**Gianina Carranzani**_ :metal:

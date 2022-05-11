@@ -4,21 +4,22 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import CartWidget from '../CartWidget/CartWidget';
 import { NavLink, Link } from 'react-router-dom'
-import { useState } from 'react'
-import { getCategoriesNavbar } from '../../services/firebase/firestore'
-import { useAsync } from '../../hooks/useAsync'
+import { useState, useEffect } from 'react'
+import { firestoreDb } from '../../services/firebase';
+import { getDocs, collection } from 'firebase/firestore';
 
 
 const NavBar = () => {
     const [ categories, setCategories ] = useState([])
-    const [ loading, setLoading ] = useState(true)
 
-    useAsync (
-        setLoading,
-        () => getCategoriesNavbar(categories),
-        setCategories,
-        () => console.log('Hubo un error en Navbar')
-    )
+    useEffect(() => {
+        getDocs(collection(firestoreDb, 'categories')).then(response => {
+            const categories = response.docs.map(doc => {
+                return { id: doc.id, ...doc.data()}
+            })
+        setCategories(categories)
+        })
+    },[])
 
     return(
         <Navbar collapseOnSelect expand="lg" variant="dark" className='bgtNav'>

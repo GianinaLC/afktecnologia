@@ -1,14 +1,12 @@
 import './ItemListContainer.css'
-import { useState} from 'react'
+import { useState } from 'react'
 import Spinner from '../Spinner/Spinner'
 import ItemList from '../ItemList/ItemList'
-import {useParams} from 'react-router-dom'
+import {useParams } from 'react-router-dom'
 import { getProducts } from '../../services/firebase/firestore'
 import { useAsync } from '../../hooks/useAsync'
 
-
 const ItemListContainer = (props) =>{
-
     const [ products, setProducts ] = useState([]) 
     const [ loading, setLoading ] = useState(true)
 
@@ -44,4 +42,5 @@ const ItemListContainer = (props) =>{
         </div>
     )
 }
+
 export default ItemListContainer
