@@ -7,7 +7,6 @@ import Footer from './components/Footer/Footer'
 import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart/Cart';
 import Form from './components/Form/Form'
-import { NotificationProvider } from './notification/Notification';
 
 function App() {
   return (
@@ -16,11 +15,11 @@ function App() {
 				<BrowserRouter>
 					<Navbar />
 					<Routes>
-						<Route path='*' element={<h1>NOT FOUND 404</h1>} />
+						<Route path='*' element={<h2>NOT FOUND 404</h2>} />
 						<Route path='/' element={<ItemListContainer greeting={'Todo lo que tu pc necesita'}/>} />
 						<Route path='/category/:categoryId' element={<ItemListContainer />} />
-						<Route path='/item/:productId' element={<NotificationProvider> <ItemDetailContainer/> </NotificationProvider>} />
-						<Route path='/cart' element={<NotificationProvider> <Cart /> </NotificationProvider>} />
+						<Route path='/item/:productId' element={<ItemDetailContainer />} />
+						<Route path='/cart' element={<Cart />} />
 						<Route path='/form' element={<Form />} />
 					</Routes>
 					<Footer />

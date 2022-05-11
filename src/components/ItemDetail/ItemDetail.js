@@ -3,13 +3,9 @@ import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
-import { useNotification } from '../../notification/Notification'
-import { FaCartPlus } from 'react-icons/fa';
 
 const ItemDetail = ({ id, name, img, price, stock, description }) => {
     const { addItem, getQuantityProd, getQuantity } = useContext(CartContext)
-
-    const { setNotification } = useNotification()
     
     const handleOnAdd = (count) => {
 
@@ -18,7 +14,6 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
         }
 
         addItem(productObj)
-        setNotification('success', < FaCartPlus />)
     }
     
     return(
@@ -37,7 +32,7 @@ const ItemDetail = ({ id, name, img, price, stock, description }) => {
                         }
                     </div>
                     <p className="price">
-                        ${price} <span style={{color:'grey', fontSize:'16px'}}> Stock: {stock}</span>
+                        $ {price} <span style={{color:'grey', fontSize:'16px'}}> Stock: {stock}</span>
                     </p>
                     <div className={getQuantity() === 0 ? 'hidden' : 'goCart'}>
                         <Link to='/cart'><span> Ir al carrito </span></Link>
