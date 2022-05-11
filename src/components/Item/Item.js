@@ -14,7 +14,7 @@ const Item = ({ id, name, img, price }) => {
                 <p className="price"> $ {price} </p>
                 <div className='detailButton'>
                     <Link to={`/item/${id}`}> Ver detalle </Link>
-                </div>
+                </div> 
             </div>
         </div>
     )

@@ -33,7 +33,7 @@ const ItemListContainer = (props) =>{
             <div>
                 <div className='imgFondo'>
                     <div className='textFondo'>
-                        <h2 className='titlePag'> { props.greeting }</h2>
+                        <h1 className='titlePag'> { props.greeting }</h1>
                         <h2 className='titlePag'> { categoryId }</h2>
                     </div>
                 </div> 

@@ -68,7 +68,7 @@ El producto va a tener campo tipo y valor
 
 
 
-![Compra en AFK](./docs/afkcompra.gif)
+![Compra en AFK](./docs/afk-compra.gif)
 
 
 ## Análisis y Componentes 🔩
