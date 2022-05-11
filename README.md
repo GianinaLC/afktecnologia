@@ -1,4 +1,4 @@
-# **AFK Tecnología**
+# **AFK Tecnología** :desktop_computer: :joystick:
 
 ## _Proyecto ecommerce para el curso de CoderHouse: React JS_
 
@@ -10,7 +10,6 @@ NodeJS
 
 ```
 git clone `https://github.com/GianinaLC/afktecnologia.git`
-
 ```
 
 2 - En la carpeta donde se encuentra "package.json" ejecutar en la terminal:
@@ -24,7 +23,7 @@ npm install
 npm start
 ```
 
-## Dependencias utilizadas
+## Dependencias utilizadas :cd:
 ```
     react-bootstrap 
     react-icons
@@ -40,7 +39,7 @@ npm start
 - react-hook-form :point_right: Reduce código, mas fácil de mostrar los errores del input, reduce el número de re-render
 
 
-## Firebase / Firestore
+## Firebase / Firestore :memo:
 Collección : **_categories_**
 
 Documento: id : **_nombre de la categoria_**
