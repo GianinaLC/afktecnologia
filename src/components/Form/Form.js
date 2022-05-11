@@ -17,7 +17,8 @@ const Form = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const { cart, totalCost, clearCart } = useContext(CartContext)
 
-    const onSubmit = (input) => {
+    const onSubmit = (input,event) => {
+        event.preventDefault()
         setInput(input)
     } 
 
@@ -108,6 +109,7 @@ const Form = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="divForm">
                         <h3> Por favor ingrese sus datos </h3>
+                        
                         <label htmlFor="nombre"> Nombre </label>
                         <input {...register("nombre", { required: true , pattern:(/^[A-Za-z]+$/i ) })} />
                         { errors.nombre?.type === 'required' && <span className="messageError"> Ingrese Nombre </span> }
@@ -135,7 +137,7 @@ const Form = () => {
 
                     <div className="divButtonForm">
                         <div className="divButtonValidate">
-                            <button className= {(input.correoConfirm === input.correo) ? 'hidden' : 'visible buttonValidateData' }> Validar datos </button>
+                            <button className= {(input.correoConfirm === input.correo) ? 'hidden' : 'visible buttonValidateData' } > Validar datos </button>
 
                             <div style={{backgroundColor: '#000000a1', padding: '10px'}} className= {(input.correoConfirm == null || input.correoConfirm === input.correo) ? 'hidden' : 'visible messageError'} > 
                                 El correo no coincide
